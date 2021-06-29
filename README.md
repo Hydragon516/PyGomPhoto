@@ -4,3 +4,7 @@
 
 ### 다운로드
 [여기](https://github.com/Hydragon516/PyGomPhoto/releases)에서 최신 버전의 PyGomPhoto.exe를 다운받아 실행합니다.
+
+![fig1](./img/1.png)
+![fig2](./img/2.png)
+![fig3](./img/3.png)
