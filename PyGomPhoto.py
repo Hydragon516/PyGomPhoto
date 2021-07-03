@@ -225,14 +225,19 @@ class converter(QThread):
                 raise RuntimeError('expected to find "mvhd" header.')
             else:
                 f.seek(4, 1)
-                creation_time = struct.unpack('>I', f.read(4))[0] - EPOCH_ADJUSTER
-                creation_time = DateTime.fromtimestamp(creation_time)
-                if creation_time.year < 1990:
+                try:
+                    creation_time = struct.unpack('>I', f.read(4))[0] - EPOCH_ADJUSTER
+                    creation_time = DateTime.fromtimestamp(creation_time)
+                    
+                    if creation_time.year < 1990:
+                        creation_time = None
+
+                except:
                     creation_time = None
-        
-        creation_time = str(creation_time)
 
         if creation_time is not None:
+            creation_time = str(creation_time)
+            
             yyyy = (creation_time.split(" ")[0]).split("-")[0]
             mmdd = (creation_time.split(" ")[0]).split("-")[1] + "-" + (creation_time.split(" ")[0]).split("-")[2]
             new_dir = "./Image/" + yyyy + "/" + mmdd
