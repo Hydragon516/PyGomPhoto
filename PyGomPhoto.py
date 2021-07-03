@@ -256,7 +256,6 @@ class converter(QThread):
             shutil.copyfile(path, new_dir + "/" + video_name)
 
 
-
 if __name__ == "__main__":
     import sys
 
